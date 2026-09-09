@@ -1,2 +1,2 @@
-# cbt
+# CBT
 Computer Based Test Application
