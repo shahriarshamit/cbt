@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="bn">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Exam - LOAD AND UNLOAD WORKER (Bengali)</title>
+
+    <!-- Local Style -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/fontawesome.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <!-- Candidate Confirmation Screen (visible initially) -->
+    <div id="candidate-screen" class="screen d-flex align-items-center justify-content-center vh-100">
+        <div class="candidate-box shadow-sm p-0 text-left" role="dialog" aria-labelledby="candidate-title" aria-describedby="candidate-desc">
+            <div class="candidate-box-header d-flex align-items-center justify-content-between px-3">
+                <div class="confirm-title">
+                    <h4 id="candidate-title" class="mb-0">বিবরনী নিশ্চিত করুন</h4>
+                </div>
+                <div class="candidate-timer small text-white-50" style="font-weight:700;">
+                    <span id="candidate-timer">02:00</span>
+                </div>
+            </div>
+            <div class="candidate-exam-img p-3 clearfix">
+                <img src="img/exam-logo.webp" alt="Exam illustration" class="float-end d-block" />
+            </div>
+            <div class="pt-2 pb-4 pe-4 ps-4 text-left">
+                <div class="candidate-info border bg-light bg-gradient p-3 mb-4 text-left" id="candidate-desc">
+                    <div class="row">
+                        <div class="col-4 font-weight-bold">পদবি</div>
+                        <div class="col-8">ANJUMANARA</div>
+
+                        <div class="col-4 font-weight-bold">নাম</div>
+                        <div class="col-8">KAMAL MD</div>
+
+                        <div class="col-4 font-weight-bold">পরীক্ষার নাম</div>
+                        <div class="col-8">OFFICE FACILITIES CLEANING WORKER</div>
+
+                        <div class="col-4 font-weight-bold">ভাষা</div>
+                        <div class="col-8">বাংলা</div>
+                    </div>
+                </div>
+                <div class="d-block py-4 text-center">
+                    <h3>উপরের বিবরনী কি সঠিক?​</h3>
+                </div>
+                <div class="d-flex justify-content-center gap-2 mb-3">
+                    <button id="btn-confirm" class="btn btn-success btn-lg mx-2" aria-label="Confirm details">
+                        <i class="fa fa-check mr-2" aria-hidden="true"></i>নিশ্চিত করুন
+                    </button>
+                    <button id="btn-cancel" class="btn btn-success btn-lg mx-2" aria-label="Cancel">
+                        <i class="fa fa-times mr-2" aria-hidden="true"></i>বাতিল করুন
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exam Screen (hidden initially) -->
+    <div id="exam-screen" class="screen d-none">
+
+        <!-- Top header (teal) -->
+        <header id="exam-header" class="exam-header d-flex align-items-center justify-content-between px-4" role="banner">
+            <div class="header-left">
+                <div id="sub-question-no" class="sub-qno mr-3" aria-live="polite">পৃষ্ঠাঃ <strong id="sub-qno-num">1</strong></div>
+                <div id="sub-division-no" class="sub-dvs mr-3" aria-live="polite">বিভাগ <strong id="sub-dvs-num">পরিচিতি</strong></div>
+            </div>
+
+            <div class="header-center text-center">
+                <div id="timer-label" class="timer-label small text-white-50">নির্দেশনার সময় অবশিষ্ট</div>
+                <div id="exam-timer" class="timer font-weight-bold"><i class="fa-regular fa-clock"></i> 00:05:00</div>
+            </div>
+
+            <div class="header-right text-right d-flex flex-controller">
+                <button id="btn-finish" class="btn btn-danger btn-md">পরীক্ষা সমাপ্ত</button>
+            </div>
+        </header>
+
+        <!-- Subheader (white) - fixed under the teal header -->
+        <div id="exam-subheader" class="exam-subheader d-flex align-items-center justify-content-between px-4" role="region" aria-label="Exam info">
+            <div class="sub-left d-flex align-items-center">
+                <div id="sub-exam-title" class="sub-title">পরীক্ষাঃ LOAD AND UNLOAD WORKER - Bengali</div>
+            </div>
+            <div class="sub-right text-right">
+                <div class="sub-candidate small text-muted">পরীক্ষার্থীঃ <strong id="sub-candidate-name-2">KAMAL MD</strong></div>
+            </div>
+        </div>
+
+        <!-- Sidebar (fixed) -->
+        <aside id="exam-sidebar" class="exam-sidebar" aria-label="Question navigator">
+            <div class="question-nav list-group" role="navigation" aria-label="Question numbers">
+                <a href="#" class="list-group-item list-group-item-action qnum" data-q="1">1</a>
+                <a href="#" class="list-group-item list-group-item-action qnum" data-q="2">2</a>
+                <a href="#" class="list-group-item list-group-item-action qnum" data-q="3">3</a>
+                <a href="#" class="list-group-item list-group-item-action qnum" data-q="4">4</a>
+                <a href="#" class="list-group-item list-group-item-action qnum" data-q="5">5</a>
+                <a href="#" class="list-group-item list-group-item-action qnum" data-q="6">6</a>
+                <a href="#" class="list-group-item list-group-item-action qnum" data-q="7">7</a>
+                <a href="#" class="list-group-item list-group-item-action qnum" data-q="8">8</a>
+                <a href="#" class="list-group-item list-group-item-action qnum" data-q="9">9</a>
+                <a href="#" class="list-group-item list-group-item-action qnum" data-q="10">10</a>
+                <a href="#" class="list-group-item list-group-item-action qnum" data-q="11">11</a>
+                <a href="#" class="list-group-item list-group-item-action qnum" data-q="12">12</a>
+                <a href="#" class="list-group-item list-group-item-action qnum" data-q="13">13</a>
+                <a href="#" class="list-group-item list-group-item-action qnum" data-q="14">14</a>
+                <a href="#" class="list-group-item list-group-item-action qnum" data-q="15">15</a>
+            </div>
+        </aside>
+
+        <!-- Main content (fills viewport height between subheader and footer and is scrollable) -->
+        <main id="exam-main" class="exam-main" role="main">
+            <div class="container-fluid">
+
+                <!-- Instruction area (second screen). Header visible; timer hidden; sidebar/questions hidden -->
+                <div id="instruction-area" class="instruction-area d-none" aria-live="polite">
+                    <div class="instruction-content">
+                        <div class="instruction-icon d-block clearfix">
+                            <img src="img/top-arrow.webp" class="float-start mb-4" style="max-width:200px; margin-left: 250px;" />
+                        </div>
+                        <h2 id="instruction-title" style="font-weight:700; font-size:34px; margin-bottom:100px; color:#111; text-decoration:underline;">সময় বাকি আছে</h2>
+                        <h2 id="instruction-line1" style="font-weight:700; font-size:34px; margin-bottom:100px; color:#111;">
+                            এই আইকন <i class="fa-regular fa-clock"></i> কী পরিমাণ সময় বাকি আছে তা নির্দেশ করে। পরীক্ষা বিভাগে 30 মিনিটের একটি টাইমার রয়েছে।
+                        </h2>
+                        <h2 id="instruction-line2" style="font-weight:700; font-size:34px; margin-bottom:100px; color:#111;text-decoration:underline;">
+                            পরীক্ষার মধ্য দিয়ে নেভিগেট করা
+                        </h2>
+                        <h2 id="instruction-line3" style="font-weight:700; font-size:34px; margin-bottom:100px; color:#111;">
+                            পরবর্তী প্রশ্নে যাওয়ার জন্য <img src="img/next-btn.webp" /> বাটনে ক্লিক করুন।
+                        </h2>
+                        <h2 id="instruction-line4" style="font-weight:700; font-size:34px; margin-bottom:100px; color:#111;">
+                            আগের প্রশ্নে ফিরে যাওয়ার জন্য <img src="img/previous-btn.webp" /> বাটনে ক্লিক করুন।
+                        </h2>
+                        <h2 id="instruction-line5" style="font-weight:700; font-size:34px; margin-bottom:100px; color:#111;">
+                            টিউটোরিয়াল অব্যাহত রাখতে <img src="img/next-btn.webp" /> বাটনে ক্লিক করুন।
+                        </h2>
+                    </div>
+                </div>
+
+                <!-- Question area (hidden until exam starts) -->
+                <div id="question-area" class="pt-4 d-none">
+                    <div id="question-card" class="question-card p-4">
+                        <h4 id="question-text" class="text-left">প্রশ্ন লোড হচ্ছে...</h4>
+                        <div id="question-image" class="question-image text-left" aria-live="polite"></div>
+                        <div class="options mt-4" role="list"></div>
+                    </div>
+                </div>
+
+                <!-- Finish confirmation screen -->
+                <div id="finish-screen" class="finish-screen d-none" aria-live="polite">
+                    <h2 style="font-weight:700; font-size:34px; margin-bottom:100px; color:#111;">আপনি যদি আপনার প্রতিক্রিয়াগুলির সাথে খুশি হন তবে আপনি পরীক্ষাটি​ সম্পূর্ণ করতে উপরের 'পরীক্ষা সমাপ্ত' বোতামটি ক্লিক করতে পারেন।​</h2>
+                    <h2 style="font-weight:700; font-size:34px; margin-bottom:100px; color:#111;">অন্যথায়, আপনার উত্তর পর্যালোচনা করতে 'ফেরত যান'-এ ক্লিক করুন।​</h2>
+                    <h2 style="font-weight:700; font-size:34px; margin-bottom:100px; color:#111;">এরপর অব্যাহত রাখতে নিচের স্ক্রিনগুলিতে হাইলাইট করা বাটনে ক্লিক করুন।​</h2>
+                    <div class="d-flex justify-content-center gap-2 mb-3">
+                        <img src="img/popup-1.webp" />
+                        <img src="img/popup-2.webp" />
+                    </div>
+                </div>
+
+                <!-- Post-confirmation screen -->
+                <div id="post-finish-screen" class="post-finish-screen d-none" aria-live="polite">
+                    <h2 class="text-center" style="font-weight:700; font-size:28px; margin-bottom:100px; color:#111;">থিওরিটিক্যাল পরীক্ষা সম্পূর্ণ করার জন্য আপনাকে ধন্যবাদ।</h2>
+                    <h2 class="text-center" style="font-weight:700; font-size:28px; margin-bottom:100px; color:#111;">অনুগ্রহ করে প্র্যাকটিক্যাল পরীক্ষা সম্পূর্ণ করুন।</h2>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer (fixed) -->
+        <footer id="exam-footer" class="exam-footer d-flex align-items-center justify-content-end px-4">
+            <button id="instruction-continue-right" class="instruction-continue-btn" aria-label="Start exam">পরীক্ষাটি শুরু করুন</button>
+            <button id="btn-prev" class="btn btn-light btn-lg px-4"><i class="fa fa-chevron-left mr-2"></i>ফিরত যান</button>
+            <button id="btn-next" class="btn btn-light btn-lg px-4">এগিয়ে যান <i class="fa fa-chevron-right ml-2"></i></button>
+        </footer>
+
+    </div>
+
+    <!-- Result Screen (hidden initially) -->
+    <div id="result-screen" class="d-none d-flex align-items-center justify-content-center vh-100">
+        <div class="result-box shadow-sm" role="region" aria-label="Result">
+            <div class="result-header text-white p-3">
+                <h3 class="mb-0">ফলাফল</h3>
+            </div>
+            <div class="result-body text-center p-4">
+                <p>আপনি এই পরীক্ষাটি শেষ করেছেন</p>
+                <p>আপনার পরীক্ষাটি মূল্যায়ন করা হবে এবং ফলাফল শীঘ্রই পাওয়া যাবে</p>
+                <p>আপনি এখন ব্রাউজার উইন্ডোটি বন্ধ করতে পারেন</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Local scripts -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

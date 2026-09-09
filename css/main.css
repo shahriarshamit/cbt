@@ -1,0 +1,552 @@
+/* Global variables & base */
+:root {
+    --teal: #0f776f;
+    --teal-dark: #0c5e59;
+    --accent-blue: #3f77c0;
+    --card-bg: #ffffff;
+    --page-bg: #f3f3f4;
+    --number-bg: #e9eef3;
+    --text: #111;
+    --muted: #6c757d;
+    --green-action: #2ea94e;
+}
+
+/* Base */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(#e9edf0, #dfe2e6);
+    color: var(--text);
+    overflow: hidden;
+}
+
+.btn-success {
+    color: #198754 !important;
+    background: #D1FFBD !important;
+    border-width: 3px !important;
+}
+
+.btn-success::hover {
+    color: #198754 !important;
+    background: #D1FFBD !important;
+    border-width: 3px !important;
+}
+
+/* Generic screens */
+.screen {
+    display: block;
+    width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    background: #FFF;
+}
+
+/* Candidate screen */
+#candidate-screen {
+    background: transparent;
+}
+.candidate-box {
+    width: 640px;
+    background: var(--card-bg);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.candidate-box-header {
+    background: var(--teal);
+    color: #fff;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.candidate-info .col-4 {
+    color: var(--muted);
+}
+
+.candidate-info .col-8 {
+    font-weight: 600;
+}
+
+#candidate-screen .btn {
+    min-width: 160px;
+    border-radius: 8px;
+    font-size: 18px;
+    padding: 10px 18px;
+}
+
+/* Top header (teal) */
+.exam-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 54px;
+    background: var(--teal);
+    color: #fff;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
+}
+
+.exam-header>.d-flex,
+.exam-header {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.exam-header .header-left,
+.exam-header .header-center,
+.exam-header .header-right {
+    display: block;
+}
+
+.exam-header .header-left {
+    flex: 1 1 33%;
+    padding-left: 18px;
+}
+
+.exam-header .header-center {
+    flex: 1 1 33%;
+    text-align: center;
+}
+
+.exam-header .header-right {
+    flex: 1 1 33%;
+    text-align: right;
+    padding-right: 18px;
+}
+
+.flex-controller {
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    gap: 10px;
+}
+
+#exam-timer {
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.time-control {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: end;
+    gap: 10px;
+}
+
+/* Subheader (white) fixed below top header */
+.exam-subheader {
+    position: fixed;
+    top: 54px;
+    /* below top header */
+    left: 0;
+    right: 0;
+    height: 48px;
+    background: #fff;
+    z-index: 1090;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+}
+
+.exam-subheader,
+.exam-footer {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.exam-subheader .sub-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #0b3c34;
+    font-weight: 600;
+}
+
+.sub-qno,
+.sub-dvs {
+    font-weight: 600;
+}
+
+.sub-title {
+    color: #0b3c34;
+    font-weight: 700;
+}
+
+/* Candidate name small on subheader right */
+.sub-candidate {
+    color: #0b3c34;
+    font-weight: 600;
+}
+
+/* Sidebar (adjust top to be below both header rows) */
+.exam-sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 60px;
+    width: 72px;
+    height: 100%;
+    background: transparent;
+    z-index: 1040;
+    overflow-y: auto;
+}
+
+#exam-screen.instruction-mode .exam-sidebar {
+    display: none;
+}
+
+/* Question nav numbers
+     - default (unanswered) is colored pale box
+     - active when clicked -> teal-dark
+     - answered -> black background, white text, disabled (pointer-events:none)
+  */
+.question-nav .list-group-item {
+    background: var(--number-bg);
+    border: none;
+    margin: 0 0 10px 0;
+    text-align: center;
+    padding: 8px 6px;
+    border-radius: 8px;
+    color: var(--text);
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+    transition: all .12s ease;
+}
+
+.question-nav .list-group-item:hover {
+    transform: translateY(-1px);
+}
+
+.question-nav .list-group-item.active {
+    background: var(--teal-dark);
+    color: #fff;
+    box-shadow: none;
+}
+
+.question-nav .list-group-item.active.answered {
+    background: var(--teal-dark) !important;
+    color: #fff !important;
+}
+
+/* Answered state: black + disabled */
+.question-nav .list-group-item.answered {
+    background: #000 !important;
+    color: #fff !important;
+    cursor: default;
+    pointer-events: none;
+    /* disable clicks */
+    opacity: 0.95;
+    box-shadow: none;
+}
+
+/* Main content (fills viewport height between subheader and footer and is scrollable) */
+.exam-main {
+    margin-top: calc(54px + 48px);
+    /* top header + subheader */
+    margin-left: 96px;
+    /* space for sidebar */
+    margin-right: 20px;
+    margin-bottom: 70px;
+    /* footer height */
+    padding: 28px 36px;
+    height: calc(100vh - 54px - 48px - 78px);
+    /* viewport minus top header, subheader and footer */
+    overflow: auto;
+    /* allow scrolling of exam content */
+    -webkit-overflow-scrolling: touch;
+}
+
+.exam-main .container-fluid {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Instruction area */
+.instruction-area {
+    min-height: 100%;
+    display: block;
+    position: relative;
+    background: transparent;
+}
+
+.instruction-content {
+    margin: 0 auto;
+    text-align: left;
+    padding: 28px 18px;
+    background: #fff;
+    border-radius: 4px;
+    color: #111;
+}
+
+.instruction-content h2 {
+    font-size: 34px;
+    margin-bottom: 18px;
+}
+
+.instruction-content p {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Instruction right floating button */
+.instruction-continue-btn {
+    background: #FFF;
+    color: #000;
+    padding: 14px 20px;
+    border-radius: 6px;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.14);
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    min-width: 220px;
+}
+
+/* Question area (hidden until exam starts) */
+#question-area.d-none {
+    display: none;
+}
+
+/* Question layout */
+.question-card {
+    background: transparent;
+    min-height: 420px;
+    display: block;
+}
+
+#question-text {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 28px auto;
+    max-width: 900px;
+    color: var(--text);
+}
+
+.question-image {
+    margin: 20px auto 24px;
+    max-width: 900px;
+}
+
+.question-image-content {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+.finish-screen {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 48px 32px;
+    background: #fff;
+}
+
+.finish-screen-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #12a9e5;
+    color: #fff;
+    font-size: 42px;
+    line-height: 64px;
+    font-weight: 700;
+}
+
+.finish-screen h2 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+
+.finish-screen p {
+    margin: 0;
+    font-size: 20px;
+}
+
+.post-finish-screen {
+    max-width: 900px;
+    margin: 120px auto;
+    padding: 48px 32px;
+    background: #fff;
+    text-align: center;
+    font-size: 24px;
+    line-height: 1.8;
+}
+
+.post-finish-screen p {
+    margin: 0 0 18px;
+}
+
+.options {
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.option {
+    gap: 12px;
+    cursor: pointer;
+}
+
+.opt-label {
+    height: 42px;
+    border-radius: 4px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.opt-text {
+    border: 3px solid #000;
+    padding: 12px 16px;
+    border-radius: 2px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+}
+
+/* Footer (fixed) - the footer remains visible during instruction mode, but Prev/Next buttons may be hidden */
+.exam-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 78px;
+    background: var(--teal);
+    z-index: 1050;
+    box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.06);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    gap: 12px;
+}
+
+#exam-footer {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+
+#exam-footer .btn {
+    border-radius: 24px;
+    padding: 14px 28px;
+    font-size: 18px;
+    background: #fff;
+    color: var(--teal-dark);
+    border: none;
+    min-width: 180px;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Result */
+#result-screen {
+    background: #000;
+}
+
+.result-box {
+    width: 620px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.result-header {
+    background: var(--accent-blue);
+    color: #fff;
+    padding: 14px 18px;
+}
+
+.result-body {
+    padding: 28px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width:1000px) {
+    .exam-sidebar {
+        width: 56px;
+    }
+
+    .exam-main {
+        margin-left: 80px;
+        padding: 20px;
+    }
+
+    .instruction-continue-btn {
+        right: 16px;
+        min-width: 160px;
+        padding: 10px 14px;
+    }
+}
+
+@media (max-width:760px) {
+    .exam-sidebar {
+        display: none;
+    }
+
+    .exam-main {
+        margin-left: 16px;
+    }
+
+    .exam-header .header-left {
+        display: none;
+    }
+
+    .exam-header .header-right {
+        display: none;
+    }
+
+    #exam-timer {
+        font-size: 16px;
+    }
+
+    #exam-footer .btn {
+        min-width: 130px;
+        padding: 10px 16px;
+        font-size: 16px;
+    }
+
+    .candidate-box {
+        width: 92%;
+    }
+
+    .instruction-continue-btn {
+        position: fixed;
+        bottom: 90px;
+        right: 14px;
+        transform: none;
+    }
+}
+
+/* Small helpers */
+.text-white-50 {
+    opacity: 0.95;
+}
+
+.small {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.9);
+}
